@@ -1,0 +1,449 @@
+{
+  "type": "FeatureCollection",
+  "generator": "Gemini AI",
+  "copyright": "Generated for testing purposes.",
+  "timestamp": "2025-05-25T15:00:00Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Basit Üçgen (3 Köşe)",
+        "type": "simple_polygon",
+        "vertices": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [5, 0],
+            [0, 5],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dışbükey Beşgen (5 Köşe)",
+        "type": "convex_polygon",
+        "vertices": 5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [6, 0],
+            [8, 4],
+            [4, 8],
+            [0, 4],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "İçbükey Beşgen (5 Köşe - Yıldız Şekli)",
+        "type": "concave_polygon",
+        "vertices": 5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [4, 8],
+            [2, 4],
+            [8, 4],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dışbükey Yedigen (7 Köşe)",
+        "type": "convex_polygon",
+        "vertices": 7
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [12, 5],
+            [8, 10],
+            [2, 10],
+            [-2, 5],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "İçbükey Yedigen (7 Köşe - U Şekli)",
+        "type": "concave_polygon",
+        "vertices": 7
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [10, 10],
+            [7, 10],
+            [7, 3],
+            [3, 3],
+            [3, 10],
+            [0, 10],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Karmaşık Onygen (10 Köşe)",
+        "type": "complex_polygon",
+        "vertices": 10
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [10, 2],
+            [8, 2],
+            [8, 4],
+            [12, 4],
+            [12, 6],
+            [6, 6],
+            [6, 8],
+            [0, 8],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kendi Kendini Kesen Dörtgen (4 Köşe - Test için)",
+        "type": "self_intersecting_polygon",
+        "vertices": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [5, 5],
+            [0, 5],
+            [5, 0],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Doğrusal Kenarlı Dörtgen (4 Köşe - Dejenere)",
+        "type": "degenerate_polygon",
+        "vertices": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [5, 0],
+            [10, 0],
+            [5, 5],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Basit Dikdörtgen (4 Köşe)",
+        "type": "simple_polygon",
+        "vertices": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [1, 1],
+            [7, 1],
+            [7, 4],
+            [1, 4],
+            [1, 1]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "L Şekilli Altıgen (6 Köşe)",
+        "type": "concave_polygon",
+        "vertices": 6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [10, 3],
+            [3, 3],
+            [3, 6],
+            [0, 6],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Çapraz Dörtgen (4 Köşe - Kendi Kendini Kesen)",
+        "type": "self_intersecting_polygon",
+        "vertices": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 10],
+            [0, 10],
+            [10, 0],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Düz Çizgi (3 Köşe - Dejenere Üçgen)",
+        "type": "degenerate_polygon",
+        "vertices": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [5, 0],
+            [10, 0],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ok Şekilli Sekizgen (8 Köşe - İçbükey)",
+        "type": "concave_polygon",
+        "vertices": 8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 5],
+            [5, 0],
+            [10, 5],
+            [7, 5],
+            [7, 10],
+            [3, 10],
+            [3, 5],
+            [0, 5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dışbükey Sekizgen (8 Köşe)",
+        "type": "convex_polygon",
+        "vertices": 8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2, 0],
+            [8, 0],
+            [10, 2],
+            [10, 8],
+            [8, 10],
+            [2, 10],
+            [0, 8],
+            [0, 2],
+            [2, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Basit Dikdörtgen 2 (4 Köşe)",
+        "type": "simple_polygon",
+        "vertices": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10, 10],
+            [20, 10],
+            [20, 20],
+            [10, 20],
+            [10, 10]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "İçbükey Onygen (10 Köşe - Karmaşık)",
+        "type": "complex_polygon",
+        "vertices": 10
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [10, 10],
+            [8, 10],
+            [8, 2],
+            [6, 2],
+            [6, 8],
+            [4, 8],
+            [4, 0],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "İnce Üçgen (3 Köşe - Test için)",
+        "type": "degenerate_polygon",
+        "vertices": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [100, 1],
+            [0, 2],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Büyük Dışbükey Altıgen (6 Köşe)",
+        "type": "convex_polygon",
+        "vertices": 6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [20, 0],
+            [25, 10],
+            [20, 20],
+            [0, 20],
+            [-5, 10],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Çapraz Onygen (10 Köşe - Kendi Kendini Kesen)",
+        "type": "self_intersecting_polygon",
+        "vertices": 10
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [0, 10],
+            [10, 10],
+            [2, 5],
+            [8, 5],
+            [4, 2],
+            [6, 2],
+            [4, 8],
+            [6, 8],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Karmaşık 12 Köşeli Çokgen",
+        "type": "complex_polygon",
+        "vertices": 12
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [10, 0],
+            [10, 2],
+            [8, 2],
+            [8, 4],
+            [12, 4],
+            [12, 6],
+            [6, 6],
+            [6, 8],
+            [4, 8],
+            [4, 10],
+            [0, 10],
+            [0, 0]
+          ]
+        ]
+      }
+    }
+  ]
+}
