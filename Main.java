@@ -25,13 +25,7 @@ public class Main {
     private static void mainProgram() throws Exception {
         deleteAllFiles("outputImages");
 
-        // loadAllPolygons ve Polygon sınıfı bu kod bloğunda tanımlı değildir.
-        // Bu yüzden, örnek bir boş liste ile devam ediyoruz.
-        // Gerçek kullanım için bu metotların ve sınıfların tanımlanması gereklidir.
-        // Eğer bu kısım derleme hatası verirse, lütfen Point ve Polygon sınıflarınızın
-        // bu dosyanın dışında veya üstünde tanımlı olduğundan emin olun.
-        List<Polygon> polygons = loadAllPolygons("inputData"); // Bu satır, dışarıdan Polygon ve Point bekler.
-
+        List<Polygon> polygons = loadAllPolygons("inputData");
 
         int index = 1;
         for (Polygon polygon : polygons.subList(0, polygons.size())) { 
@@ -44,13 +38,9 @@ public class Main {
     }
 
     private static void createTriangles(Polygon polygon, int index) {
-        // Polygon, Point ve Triangle sınıfları bu kod bloğunda tanımlı değildir.
-        // Bu yüzden, bu metot şu an için çalışmayacaktır.
-        // Derleme hatası verirse, ilgili sınıfların tanımlı olduğundan emin olun.
         List<Point> points = polygon.getPoints();
         List<Triangle> triangles = triangulate(points, TriangulationAlgorithmType.NAIVE_2);
         
-        // PolygonVisualizer sınıfı tanımlı değilse bu satır hata verir.
         PolygonVisualizer.drawPolygon(
                 "outputImages/polygon_" + index + ".png", polygon, triangles);
     }
@@ -71,8 +61,6 @@ public class Main {
     }
 
     private static List<Triangle> naiveTriangulate1(List<Point> points) {
-        // Point ve Triangle sınıfları bu kod bloğunda tanımlı değildir.
-        // Derleme hatası verirse, ilgili sınıfların tanımlı olduğundan emin olun.
         List<Triangle> triangles = new ArrayList<>();
 
         if (points.size() < 3)
@@ -109,49 +97,28 @@ public class Main {
      */
     private static List<Triangle> naiveTriangulate2(List<Point> points) {
         List<Triangle> triangles = new ArrayList<>();
-        // List<Quadrilateral> processedQuadrilaterals = new ArrayList<>(); // Orijinal mantıkta bu liste kullanılmıyor.
 
-        // Orijinal listeyi doğrudan değiştirmemek için bir kopya oluştur.
         List<Point> currentPoints = new ArrayList<>(points);
 
         System.out.println("Naive Triangulate 2 (recursive dörtgen işleme) algoritması çalıştırılıyor.");
         System.out.println("Başlangıç nokta sayısı: " + currentPoints.size());
-
-        // Recursive yardımcı metodu çağır
-        // rotationCount'u da recursive çağrılar arasında taşıyoruz.
-        // Bu metot, orijinal while döngüsünün içindeki mantığı ve rotationCount'u yönetir.
         processQuadRecursive(currentPoints, triangles, 0); 
         
         System.out.println("naiveTriangulate2 algoritması tamamlandı. Toplam üçgen: " + triangles.size());
         return triangles;
     }
 
-    /**
-     * Orijinal naiveTriangulate2 algoritmasının döngü mantığını recursive olarak uygular.
-     * Bu metot, Point, Triangle, Quadrilateral ve Segment sınıflarına,
-     * isQuadrilateral, isDiagonalInternalAndNonIntersecting, orientation, onSegment, getSmallestAngleInRadians
-     * gibi yardımcı metotlara bağımlıdır.
-     *
-     * @param currentPoints Çokgenin mevcut köşe noktaları (bu liste recursive çağrılarda değiştirilebilir).
-     * @param resultTriangles Bulunan üçgenlerin ekleneceği liste.
-     * @param rotationCount Mevcut recursive seviyede yapılan döndürme sayısı (sonsuz döngüyü engellemek için).
-     */
     private static void processQuadRecursive(List<Point> currentPoints, List<Triangle> resultTriangles, int rotationCount) {
-        // Temel Durum (Base Case): Çokgende 4'ten az nokta kaldıysa, dörtgen oluşturamayız.
         if (currentPoints.size() < 4) {
             if (currentPoints.size() == 3) {
-                // Kalan 3 nokta son üçgeni oluşturur.
                 resultTriangles.add(new Triangle(currentPoints));
                 System.out.println("✅ Son üçgen oluşturuldu: " + currentPoints);
             } else {
                 System.out.println("⚠️ Kalan nokta sayısı üçgen oluşturmak için yeterli değil (" + currentPoints.size() + " nokta).");
             }
-            return; // Özyinelemeyi sonlandır
+            return;
         }
 
-        // --- Recursive Adım: Orijinal while döngüsünün içindeki mantık ---
-
-        // Mevcut çokgenin ilk dört noktasını al.
         Point p0 = currentPoints.get(0);
         Point p1 = currentPoints.get(1);
         Point p2 = currentPoints.get(2);
@@ -159,13 +126,9 @@ public class Main {
 
         System.out.println("Kontrol edilen dörtlü: " + p0 + ", " + p1 + ", " + p2 + ", " + p3);
 
-        // Bu dört noktanın bir dörtgen oluşturup oluşturmadığını kontrol et.
-        // isQuadrilateral metodu ve onun bağımlılıkları tanımlı olmalıdır.
         if (isQuadrilateral(p0, p1, p2, p3)) {
             System.out.println("Dörtlü geçerli bir dörtgen oluşturuyor. İşleniyor...");
 
-            // --- İnce üçgenlerden kaçınma ve köşegen seçimi ---
-            // isDiagonalInternalAndNonIntersecting metodu ve onun bağımlılıkları da tanımlı olmalı.
             boolean diagonal1_valid = isDiagonalInternalAndNonIntersecting(p0, p2, p1, p3, currentPoints);
             boolean diagonal2_valid = isDiagonalInternalAndNonIntersecting(p1, p3, p0, p2, currentPoints);
 
@@ -200,38 +163,27 @@ public class Main {
                 System.out.println("    Sadece köşegen (p1, p3) geçerli. Bu köşegen kullanılıyor.");
             } else {
                 System.out.println("    ⚠️ Hata: Geçerli bir dörtgen olmasına rağmen geçerli iç köşegen bulunamadı. Üçgenlenemedi.");
-                return; // Bu dörtgen işlenemiyor, recursive çağrıyı sonlandır.
+                return;
             }
 
-            // Dörtgen işlendikten ve üçgenler eklendikten sonra, aradaki noktaları çokgenden çıkar.
-            // Talimat: "dışarda kalan 2 noktayı listeden çıkararak yapabilirsin"
-            // Bu, P1 ve P2 noktalarını listeden çıkarmak anlamına gelir.
-            currentPoints.remove(2); // p2'yi çıkar
-            currentPoints.remove(1); // p1'i çıkar
+            currentPoints.remove(2);
+            currentPoints.remove(1);
 
             System.out.println("Noktalar çıkarıldı. Güncel nokta sayısı: " + currentPoints.size());
             System.out.println("Kalan noktalar: " + currentPoints);
 
-            // Başarılı bir işlem sonrası, rotationCount'u sıfırla ve kalan çokgeni recursive işle.
             processQuadRecursive(currentPoints, resultTriangles, 0);
 
         } else {
-            // Eğer ilk dörtlü bir dörtgen oluşturmuyorsa (kendi kendini kesiyor veya dejenere),
-            // bu dörtlüden bir dörtgen koparamıyoruz.
-            // Bu durumda, bir sonraki dörtlü setini denemek için listenin başındaki noktayı
-            // listenin sonuna taşıyarak noktaları döndürüyoruz.
-            // Orijinal rotationCount kontrolü
             if (rotationCount < currentPoints.size()) { 
                 Point firstPoint = currentPoints.remove(0);
                 currentPoints.add(firstPoint);
                 System.out.println("Dörtlü geçerli bir dörtgen oluşturmuyor. Noktalar döndürüldü. Döndürme Sayısı: " + (rotationCount + 1));
                 System.out.println("Yeni başlangıç: " + currentPoints.get(0) + ". Kalan nokta sayısı: " + currentPoints.size());
 
-                // Recursive çağrı ile döndürülmüş noktaları işle, rotationCount'u artır.
                 processQuadRecursive(currentPoints, resultTriangles, rotationCount + 1);
             } else {
                 System.out.println("⚠️ Tüm noktalar döndürüldü ancak geçerli bir dörtgen bulunamadı. Döngü sonlandırılıyor.");
-                // Bu çokgen, bu metot ile üçgenlenemedi.
             }
         }
     }
@@ -248,10 +200,6 @@ public class Main {
      * @return Noktalar geçerli bir dörtgen oluşturuyorsa true, aksi takdirde false.
      */
     public static boolean isQuadrilateral(Point p0, Point p1, Point p2, Point p3) {
-        // Not: Bu metodun ve bağımlılıklarının (isConvex, doProperSegmentsIntersect, orientation, onSegment, onSegmentInterior)
-        // bu dosyanın üstünde veya dışında tanımlı olduğundan emin olun.
-        
-        // 1. Noktaların birbirinden farklı olduğunu kontrol et
         if (p0.equals(p1) || p0.equals(p2) || p0.equals(p3) ||
             p1.equals(p2) || p1.equals(p3) ||
             p2.equals(p3)) {
@@ -259,7 +207,6 @@ public class Main {
             return false;
         }
 
-        // 2. Ardışık üç noktanın doğrusal olup olmadığını kontrol et
         if (orientation(p0, p1, p2) == 0 ||
             orientation(p1, p2, p3) == 0 ||
             orientation(p2, p3, p0) == 0 ||
@@ -268,13 +215,11 @@ public class Main {
             return false;
         }
 
-        // 3. Çapraz kenarların kesişip kesişmediğini kontrol et (Kendi kendini kesen dörtgenler için)
         if (doProperSegmentsIntersect(p0, p1, p2, p3) || doProperSegmentsIntersect(p1, p2, p3, p0)) {
             System.out.println("   [isQuadrilateral] Dörtgen kendi kendini kesiyor: Çapraz kenar kesişimi.");
             return false;
         }
 
-        // 4. Dörtgenin Dışbükeyliğini Kontrol Etme
         if (!isConvex(p0, p1, p2, p3)) {
              System.out.println("   [isQuadrilateral] Dörtgen içbükeydir ve bu algoritmada dörtgen olarak kabul edilmez.");
              return false;
@@ -295,15 +240,14 @@ public class Main {
      * @return Dörtgen dışbükey ise true, aksi takdirde false.
      */
     public static boolean isConvex(Point p0, Point p1, Point p2, Point p3) {
-        // orientation 0 döndürmediği varsayılır (isQuadrilateral tarafından kontrol edilir).
         int firstOrientation = orientation(p0, p1, p2);
-        if (firstOrientation == 0) { return false; } // Zaten isQuadrilateral tarafından ele alınmalıydı
+        if (firstOrientation == 0) { return false; }
 
         if (orientation(p1, p2, p3) != firstOrientation) { return false; }
         if (orientation(p2, p3, p0) != firstOrientation) { return false; }
         if (orientation(p3, p0, p1) != firstOrientation) { return false; }
 
-        return true; // Tüm yönler aynıysa dışbükeydir.
+        return true;
     }
 
     // --- isDiagonalInternalAndNonIntersecting metodu (Ana sınıf içinde veya dışarıda tanımlı olmalı) ---
@@ -425,13 +369,10 @@ public class Main {
         int o3 = orientation(p2, q2, p1);
         int o4 = orientation(p2, q2, q1);
 
-        // Genel durum: Karşılıklı yönlerde ve doğrusal değillerse içten kesişirler.
         if (o1 != 0 && o2 != 0 && o3 != 0 && o4 != 0 && (o1 != o2) && (o3 != o4)) {
             return true;
         }
 
-        // Doğrusal durumlar: Bir segmentin ucunun diğer segmentin *içinde* olup olmadığını kontrol et.
-        // onSegmentInterior metodunu kullanarak ve uç noktaları hariç tutarak.
         if (o1 == 0 && onSegmentInterior(p1, p2, q1)) return true; 
         if (o2 == 0 && onSegmentInterior(p1, q2, q1)) return true; 
         if (o3 == 0 && onSegmentInterior(p2, p1, q2)) return true; 
@@ -514,7 +455,6 @@ public class Main {
                 points.remove(points.size() - 1);
             }
 
-            // Polygon sınıfı tanımlı olmalı.
             Polygon polygon = new Polygon(points);
             polygons.add(polygon);
         }
