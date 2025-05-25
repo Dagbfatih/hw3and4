@@ -1,5 +1,8 @@
 # Çokgen Üçgenleme Algoritması
 
+# NOT:
+Bu algoritma, dışbükey cisimlerde genellikle başarısız sonuç verebilmektedir. Projeye geç başladığım için daha iyisini yapamadım. Keyifli okumalar... 
+
 ## İçindekiler
 
 1.  [Proje Tanımı](#1-proje-tanımı)
