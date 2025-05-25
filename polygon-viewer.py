@@ -29,6 +29,7 @@ def plot_polygon_from_file(filepath):
 # inputData klasöründeki tüm .txt dosyalarını al
 files = [f for f in os.listdir("inputData") if f.endswith(".txt")]
 random_files = random.sample(files, 3)
+random_files.append(files[12])
 
 # Rastgele 3 dosyayı çiz
 for file in random_files:
